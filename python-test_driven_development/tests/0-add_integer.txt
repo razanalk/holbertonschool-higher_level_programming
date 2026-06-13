@@ -1,0 +1,51 @@
+The ``add_integer`` function
+============================
+
+Using integers:
+
+    >>> add_integer(1, 2)
+    3
+
+Using negative numbers:
+
+    >>> add_integer(100, -2)
+    98
+
+Using default value:
+
+    >>> add_integer(2)
+    100
+
+Using floats:
+
+    >>> add_integer(100.3, -2)
+    98
+
+Float conversion:
+
+    >>> add_integer(4.8, 1.2)
+    5
+
+TypeError on second argument:
+
+    >>> add_integer(4, "School")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+TypeError on first argument:
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+TypeError on first argument string:
+
+    >>> add_integer("School", 2)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+TypeError on second argument None:
+
+    >>> add_integer(2, None)
+    Traceback (most recent call last):
+    TypeError: b must be an integer
