@@ -28,3 +28,18 @@ TypeError: div must be a number
 Traceback (most recent call last):
 ...
 ZeroDivisionError: division by zero
+
+>>> matrix_divided([[1, 2], [3, 4]], float('inf'))
+[[0.0, 0.0], [0.0, 0.0]]
+
+>>> matrix_divided([[1, float('inf')], [3, 4]], 2)
+[[0.5, inf], [1.5, 2.0]]
+
+>>> matrix_divided([[1, float('nan')], [3, 4]], 2)
+[[0.5, nan], [1.5, 2.0]]
+
+>>> matrix_divided([[1, float('inf')], [3, 4]], float('inf'))
+[[0.0, nan], [0.0, 0.0]]
+
+>>> matrix_divided([[1, float('nan')], [3, 4]], float('inf'))
+[[0.0, nan], [0.0, 0.0]]
