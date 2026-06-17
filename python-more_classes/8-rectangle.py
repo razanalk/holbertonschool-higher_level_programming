@@ -58,19 +58,19 @@ class Rectangle:
             return ""
 
         rows = []
-
         for i in range(self.__height):
             rows.append(str(self.print_symbol) * self.__width)
 
         return "\n".join(rows)
 
     def __repr__(self):
-        """Return representation for eval()."""
+        """Return representation for eval."""
         return "Rectangle({}, {})".format(
             self.__width,
             self.__height
         )
-            @staticmethod
+
+    @staticmethod
     def bigger_or_equal(rect_1, rect_2):
         """Return biggest rectangle based on area."""
         if not isinstance(rect_1, Rectangle):
@@ -87,6 +87,7 @@ class Rectangle:
             return rect_1
 
         return rect_2
+
     def __del__(self):
         """Delete instance."""
         Rectangle.number_of_instances -= 1
