@@ -1,58 +1,41 @@
 #!/usr/bin/python3
-"""Shapes, Interfaces, and Duck Typing"""
-
 from abc import ABC, abstractmethod
-import math
+from math import pi
 
 
 class Shape(ABC):
-    """Abstract Shape class"""
-
     @abstractmethod
     def area(self):
-        """Calculate area"""
         pass
 
     @abstractmethod
     def perimeter(self):
-        """Calculate perimeter"""
         pass
 
 
 class Circle(Shape):
-    """Circle class"""
-
     def __init__(self, radius):
-        """Initialize circle"""
-        self.radius = radius
+        self.__radius = radius
 
     def area(self):
-        """Return area of circle"""
-        return math.pi * self.radius ** 2
+        return self.__radius**2 * pi
 
     def perimeter(self):
-        """Return perimeter of circle"""
-        return 2 * math.pi * self.radius
+        return abs(self.__radius * 2 * pi)
 
 
 class Rectangle(Shape):
-    """Rectangle class"""
-
     def __init__(self, width, height):
-        """Initialize rectangle"""
-        self.width = width
-        self.height = height
+        self.__width = width
+        self.__height = height
 
     def area(self):
-        """Return area of rectangle"""
-        return self.width * self.height
+        return self.__width * self.__height
 
     def perimeter(self):
-        """Return perimeter of rectangle"""
-        return 2 * (self.width + self.height)
+        return abs((self.__width + self.__height) * 2)
 
 
-def shape_info(shape):
-    """Print shape information"""
-    print("Area:", shape.area())
-    print("Perimeter:", shape.perimeter())
+def shape_info(any_shape):
+    print(f"Area: {any_shape.area()}")
+    print(f"Perimeter: {any_shape.perimeter()}")
