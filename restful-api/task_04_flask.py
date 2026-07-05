@@ -4,39 +4,31 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-users = {
-    "jane": {
-        "username": "jane",
-        "name": "Jane",
-        "age": 28,
-        "city": "Los Angeles"
-    },
-    "john": {
-        "username": "john",
-        "name": "John",
-        "age": 30,
-        "city": "New York"
-    }
-}
+# Start with an empty users dictionary
+users = {}
 
 
 @app.route("/")
 def home():
+    """Home route."""
     return "Welcome to the Flask API!"
 
 
 @app.route("/status")
 def status():
+    """Status route."""
     return "OK"
 
 
 @app.route("/data")
 def data():
+    """Return all usernames."""
     return jsonify(list(users.keys()))
 
 
 @app.route("/users/<username>")
 def get_user(username):
+    """Return a specific user."""
     if username in users:
         return jsonify(users[username])
 
@@ -45,6 +37,7 @@ def get_user(username):
 
 @app.route("/add_user", methods=["POST"])
 def add_user():
+    """Add a new user."""
 
     data = request.get_json()
 
