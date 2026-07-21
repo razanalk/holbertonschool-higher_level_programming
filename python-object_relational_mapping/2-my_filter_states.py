@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Displays states matching the provided name.
+Displays all values in the states table where name matches the argument.
 """
 
 import MySQLdb
@@ -18,15 +18,15 @@ if __name__ == "__main__":
 
     cur = conn.cursor()
 
-    query = (
-        "SELECT * FROM states "
-        "WHERE name = '{}' "
-        "ORDER BY id ASC"
-    ).format(sys.argv[4])
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY states.id ASC".format(
+        sys.argv[4]
+    )
 
     cur.execute(query)
 
-    for row in cur.fetchall():
+    rows = cur.fetchall()
+
+    for row in rows:
         print(row)
 
     cur.close()
