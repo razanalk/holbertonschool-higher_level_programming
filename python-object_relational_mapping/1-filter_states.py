@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 """
-Lists states starting with N.
+Lists all states starting with N.
 """
 
 import MySQLdb
 import sys
+
 
 if __name__ == "__main__":
     conn = MySQLdb.connect(
@@ -18,10 +19,14 @@ if __name__ == "__main__":
     cur = conn.cursor()
 
     cur.execute(
-        "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
+        "SELECT * FROM states "
+        "WHERE BINARY name LIKE 'N%' "
+        "ORDER BY states.id ASC"
     )
 
-    for row in cur.fetchall():
+    rows = cur.fetchall()
+
+    for row in rows:
         print(row)
 
     cur.close()
